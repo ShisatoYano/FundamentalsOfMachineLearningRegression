@@ -10,6 +10,7 @@ My Studying Log of fundamentals about Machine Learning Regression.
     - [Table of contents](#table-of-contents)
     - [Introduction](#introduction)
     - [Author](#author)
+    - [Linear model with 1 dimensional input](#linear-model-with-1-dimensional-input)
 
 <!-- /TOC -->
 
@@ -22,3 +23,38 @@ I extracted some important points and some related sample python codes and wrote
 ## Author
 ---
 [Makoto Ito](https://researchmap.jp/itomakoto/)
+
+## Linear model with 1 dimensional input
+---
+* Input data: Age  
+\[
+  \bm{x} = \left(
+    \begin{array}{c}
+      x_0 \\
+      x_1 \\
+      \vdots \\
+      x_n \\
+      \vdots \\
+      x_{N-1}
+    \end{array}
+  \right)
+\]
+
+* Target data: Height  
+\[
+  \bm{t} = \left(
+    \begin{array}{c}
+      t_0 \\
+      t_1 \\
+      \vdots \\
+      t_n \\
+      \vdots \\
+      t_{N-1}
+    \end{array}
+  \right)
+\]
+
+N means the number of people and N = 20. A purpose of this regression is predicting a height with an age of a person who is not included the databases.  
+
+* Data generation
+![](2019-05-01-17-12-16.png)
