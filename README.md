@@ -32,8 +32,7 @@ I extracted some important points and some related sample python codes and wrote
 ## Linear model with 1 dimensional input
 ---
 ### Input data: Age  
-$$
-  \bm{x} = \left(
+$$\bm{x} = \left(
     \begin{array}{c}
       x_0 \\
       x_1 \\
@@ -42,8 +41,7 @@ $$
       \vdots \\
       x_{N-1}
     \end{array}
-  \right)
-$$
+  \right)$$
 
 ### Target data: Height  
 \[
