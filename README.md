@@ -1,4 +1,4 @@
-# FundamentalsOfMachineLearningRegression
+# Fundamentals of Regression by Machine Learning
 ---
 My Studying Log of fundamentals about Machine Learning Regression.
 
@@ -6,7 +6,7 @@ My Studying Log of fundamentals about Machine Learning Regression.
 ---
 <!-- TOC -->
 
-- [FundamentalsOfMachineLearningRegression](#fundamentalsofmachinelearningregression)
+- [Fundamentals of Regression by Machine Learning](#fundamentals-of-regression-by-machine-learning)
     - [Table of contents](#table-of-contents)
     - [Introduction](#introduction)
     - [Author](#author)
@@ -16,6 +16,8 @@ My Studying Log of fundamentals about Machine Learning Regression.
         - [Data generation](#data-generation)
         - [Linear model definition](#linear-model-definition)
         - [Gradient method](#gradient-method)
+        - [Learning Result](#learning-result)
+        - [Point to notice](#point-to-notice)
 
 <!-- /TOC -->
 
@@ -126,3 +128,19 @@ $$
 $$
 $\alpha$ is a positive number and called "Learning rate" which can adjust a update width of $w$. The bigger this number is, the bigger the update width is, but a convergence of calculation will be unstable.  
 
+### Learning Result
+
+* Learning behavior plot:
+Initial point: [10.0, 165.0]  
+Final point: [1.598, 148.172]  
+Number of iteration: 12804  
+![](2019-05-02-16-58-31.png)  
+
+* Predicted linear line plot
+Mean squared error: 29.936629[$cm^2$]  
+Standard deviation: 5.471[$cm$]  
+![](2019-05-02-17-06-59.png)
+
+### Point to notice
+
+The result which is solved by Gradient method is just a local minimum value and not always global minimum value. Practically, we need to try gradient method with various initial values and select the minimum result value.  
