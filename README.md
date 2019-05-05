@@ -21,6 +21,7 @@ My Studying Log of fundamentals about Machine Learning Regression.
     - [Plane model with 2 dimensional input](#plane-model-with-2-dimensional-input)
         - [Data generation](#data-generation-1)
         - [Plane model](#plane-model)
+    - [D-dimensional Linear Regression Model](#d-dimensional-linear-regression-model)
 
 <!-- /TOC -->
 
@@ -174,21 +175,54 @@ $$
 * Gradient:  
 $$
   \frac{\sigma J}{\sigma w_0}=0, \frac{\sigma J}{\sigma w_1}=0, \frac{\sigma J}{\sigma w_2}=0
-$$
+$$  
 
 * Optimal parameters:  
 $$
   w_0 = \frac {cov(t,x_1)cov(x_0,x_1)-var(x_1)cov(t,x_0)}{cov(x_0,x_1)^2-var(x_0)var(x_1)}
-$$
+$$  
 $$
   w_1 = \frac {cov(t,x_0)cov(x_0,x_1)-var(x_0)cov(t,x_1)}{cov(x_0,x_1)^2-var(x_0)var(x_1)}
-$$
+$$  
 $$
   w_2 = -w_0 \frac{1}{N}\sum_{n=0}^{N-1}x_{n,0}-w_1 \frac{1}{N}\sum_{n=0}^{N-1}x_{n,1}+\frac{1}{N}\sum_{n=0}^{N-1}t_n
-$$
+$$  
 
 * Learning result:  
 This learning was executed by learning_plane_model.py  
 $w_0=0.4$, $w_1=1.0$, $w_2=95.5$  
 Standard deviation: 2.374[cm]  
 ![](2019-05-03-17-37-43.png)
+
+## D-dimensional Linear Regression Model
+
+* It requires a lot of work to derive all of formulas at different dimension. So, we need to define the number of dimension as a variable, $D$.  
+
+$$
+  y(x) = w_0x_0 + w_1x_1 + \cdots + w_{D-1}x_{D-1} + w_D
+$$  
+* We can shorten the above model with Matrix representation.  
+$$
+  y(x) = \left[
+            w_0 \cdots w_{D-1}
+         \right]
+         \left[
+            \begin{array}{c}
+              x_0 \\
+              \vdots \\
+              x_{D-1}
+           \end{array}
+         \right]
+         = \bm{w}^{\mathrm{T}}\bm{x}
+$$  
+
+* Result of model  
+$$
+  J(\bm{w}) = \frac{1}{N}\sum_{n=0}^{N-1}(y(x_n)-t_n)^2 = \frac{1}{N}\sum_{n=0}^{N-1}(\bm{w}^{\mathrm{T}}\bm{x}_n-t_n)^2
+$$  
+$$
+  \frac{\partial J}{\partial w_i} = \frac{1}{N}\sum_{n=0}^{N-1} \frac{\partial}{\partial w_i} (\bm{w}^{\mathrm{T}}\bm{x}_n-t_n)^2 = \frac{2}{N}\sum_{n=0}^{N-1} \frac{\partial}{\partial w_i} (\bm{w}^{\mathrm{T}}\bm{x}_n-t_n)x_{n,i}
+$$  
+$$
+  \sum_{n=0}^{N-1}(\bm{w}^{\mathrm{T}}\bm{x}_n-t_n)x_{n,i}=0
+$$  
