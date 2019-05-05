@@ -22,6 +22,9 @@ My Studying Log of fundamentals about Machine Learning Regression.
         - [Data generation](#data-generation-1)
         - [Plane model](#plane-model)
     - [D-dimensional Linear Regression Model](#d-dimensional-linear-regression-model)
+        - [Solution of model](#solution-of-model)
+        - [Extension to plane not passing through origin](#extension-to-plane-not-passing-through-origin)
+    - [Linear basis function](#linear-basis-function)
 
 <!-- /TOC -->
 
@@ -216,7 +219,7 @@ $$
          = \bm{w}^{\mathrm{T}}\bm{x}
 $$  
 
-* Result of model  
+### Solution of model  
 $$
   J(\bm{w}) = \frac{1}{N}\sum_{n=0}^{N-1}(y(x_n)-t_n)^2 = \frac{1}{N}\sum_{n=0}^{N-1}(\bm{w}^{\mathrm{T}}\bm{x}_n-t_n)^2
 $$  
@@ -226,3 +229,25 @@ $$
 $$
   \sum_{n=0}^{N-1}(\bm{w}^{\mathrm{T}}\bm{x}_n-t_n)x_{n,i}=0
 $$  
+$$
+  \sum_{n=0}^{N-1}(\bm{w}^{\mathrm{T}}\bm{x}_n-t_n)[x_{n,0},x_{n,1},\cdots,x_{n,D-1}]=\sum_{n=0}^{N-1}(\bm{w}^{\mathrm{T}}\bm{x}_n-t_n) \bm{x_n^{\mathrm{T}}}=[0\ 0\ \cdots\ 0]
+$$  
+$$
+  \sum_{n=0}^{N-1}x_n x_n^{\mathrm{T}} = \bm{X}^{\mathrm{T}}\bm{X} \,,  \sum_{n=0}^{N-1}x_n x_n^{\mathrm{T}} = \bm{t}^{\mathrm{T}}\bm{X}
+$$  
+$$
+  (\bm{w}^{\mathrm{T}}\bm{X}^{\mathrm{T}}\bm{X} - \bm{t}^{\mathrm{T}}\bm{X})^{\mathrm{T}} = [0\ 0\ \cdots\ 0]^{\mathrm{T}}
+$$  
+$$
+  \bm{w} = (\bm{X}^{\mathrm{T}}\bm{X})^{-1}\bm{X}^{\mathrm{T}}\bm{t}
+$$  
+The right side of the above formula, $(\bm{X}^{\mathrm{T}}\bm{X})^{-1}\bm{X}^{\mathrm{T}}$ is called "Moore-Penrose Pseudo-inverse matrix".  
+
+### Extension to plane not passing through origin
+
+Vector $\bm{x}$ can be thought as 3 dimensional vector by adding 3rd element which is always "1". In case that $x_2 = 1$,  
+$$
+  y(\bm{x}) = w_0 x_0 + w_1 x_1 + w_2 x_2 = w_0 x_0 + w_1 x_1 + w_2
+$$  
+
+## Linear basis function
