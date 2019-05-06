@@ -251,3 +251,45 @@ $$
 $$  
 
 ## Linear basis function
+* Way of thinking  
+$x$ of Linear Regression model is replaced with Basis function $\phi(x)$ to create a function which has various shapes.  
+
+* Gaussian function  
+Gaussian function is used as basis function in this section. Basis function is used as multiple sets and a suffix $j$ is attached in the formula. $s$ is a parameter to adjust a spread of the function.  
+$$
+  \phi_j(x) = exp\{ -\frac{(x-\mu_j)^2}{2s^2} \}
+$$  
+
+* Combined function of $M$ gaussian functions  
+This figure is created gaussian_basis_function.py  
+In order from left, $\phi_0(x)$, $\phi_1(x)$, $\phi_2(x)$, $\phi_3(x)$.  
+![](2019-05-06-21-43-58.png)  
+$M$ is the number of combined functions. In the above, $M=4$
+Weight parameters for each function: $w_0$, $w_1$, $w_2$, $w_3$  
+A parameter for adjusting up and down movement of model: $w_4$  
+$w_4$ is for a dummy function, $\phi_4(x)=1$.  
+$$
+  y(x,\bm{w})=w_0\phi_0(x)+w_1\phi_1(x)+w_2\phi_2(x)+w_3\phi_3(x)+w_4 \\
+  y(\bm{x},\bm{w}) = \sum_{j=0}^{M}w_j\phi_j(\bm{x})=\bm{w}^{\mathrm{T}}\bm{\phi}(\bm{x})
+$$  
+
+* Mean squared error $J$  
+$$
+  J(\bm{w})=\frac{1}{N}\sum_{n=0}^{N-1}\{ \bm{w}^{\mathrm{T}}\bm{\phi}(\bm{x_n})-t_n \}^2
+$$  
+
+* Solution $\bm{w}$  
+$$\bm{w}=(\bm{\phi^{\mathrm{T}}}\bm{\phi})^{-1}\bm{\phi^{\mathrm{T}}}\bm{t}$$  
+
+* Preprocessed input data $\bm{\phi}$  
+$\bm{\phi}$ is called "Design matrix".  
+$$
+  \bm{\phi} = \left[
+            \begin{array}{c}
+              \phi_0(\bm{x}_0) & \phi_1(\bm{x}_0) & \cdots & \phi_M(\bm{x}_0) \\
+              \phi_0(\bm{x}_1) & \phi_1(\bm{x}_1) & \cdots & \phi_M(\bm{x}_1) \\
+              \vdots & \vdots & \vdots & \vdots \\
+              \phi_0(\bm{x}_{N-1}) & \phi_1(\bm{x}_{N-1}) & \cdots & \phi_M(\bm{x}_{N-1})
+           \end{array}
+         \right]
+$$  
