@@ -25,6 +25,7 @@ My Studying Log of fundamentals about Machine Learning Regression.
         - [Solution of model](#solution-of-model)
         - [Extension to plane not passing through origin](#extension-to-plane-not-passing-through-origin)
     - [Linear basis function](#linear-basis-function)
+    - [Overfitting problem](#overfitting-problem)
 
 <!-- /TOC -->
 
@@ -293,3 +294,12 @@ $$
            \end{array}
          \right]
 $$  
+
+* Learning Result  
+This learning was executed by learning_gaussian_function.py  
+$w_0=62.2$, $w_1=71.8$, $w_2=30.4$, $w_3=110.6$, $w_4=31.9$  
+Standard deviation: 1.43[cm]  
+![](2019-05-08-22-52-49.png)  
+
+## Overfitting problem  
+![](2019-05-08-23-29-00.png)  

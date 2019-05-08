@@ -53,17 +53,20 @@ def show_gaussian_basis_function(w):
     plt.plot(xb, y, c=[.5, .5, .5], lw=4)
 
 # main
-M = 4
-plt.figure(figsize=(4, 4))
-W = fitting_gaussian(X, T, M)
-show_gaussian_basis_function(W)
-plt.plot(X, T, marker='o', linestyle='None', 
-         color='cornflowerblue', markeredgecolor='black')
-plt.grid(True)
-plt.xlim(X_min, X_max)
-mse = mse_fitting_gaussian(X, T, W)
-print('W='+str(np.round(W,1)))
-print("SD={0:.2f} [cm]".format(np.sqrt(mse)))
-plt.xlabel('Age')
-plt.ylabel('Height[cm]')
+plt.figure(figsize=(10, 2.5))
+plt.subplots_adjust(wspace=0.3)
+M = [2, 4, 7, 9]
+for i in range(len(M)):
+    plt.subplot(1, len(M), i+1)
+    W = fitting_gaussian(X, T, M[i])
+    show_gaussian_basis_function(W)
+    plt.plot(X, T, marker='o', linestyle='None', 
+             color='cornflowerblue', markeredgecolor='black')
+    plt.grid(True)
+    plt.xlim(X_min, X_max)
+    plt.ylim(130, 200)
+    plt.xlabel('Age')
+    plt.ylabel('Height[cm]')
+    mse = mse_fitting_gaussian(X, T, W)
+    plt.title("M={0:d}, SD={1:.1f}".format(M[i], np.sqrt(mse)))
 plt.show()
