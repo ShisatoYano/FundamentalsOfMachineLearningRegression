@@ -302,4 +302,5 @@ Standard deviation: 1.43[cm]
 ![](2019-05-08-22-52-49.png)  
 
 ## Overfitting problem  
+Standard deviation of error is decreasing by insreasing the number of $M$ but, the basis function is getting more curved as follow.  
 ![](2019-05-08-23-29-00.png)  
