@@ -308,3 +308,7 @@ Standard deviation of error is decreasing by insreasing the number of $M$ but, t
 This curve gets close to each sample points but it becomes deformed at a part where there is no sample point. This is called "over-fitting". The prediction for a new data will become bad.  
 
 ## Hold-out validation  
+All of data, $\bm{x}$ and $\bm{t}$ are divided into "Test data" and "Training data". For this example, 1/4 of data is used for test and the rest, 3/4 is used for training. The parameter of model, $\bm{w}$ is optimized with only training data and a mean squared error for test data is calculated with the optimized parameter $\bm{w}$.  
+![](2019-05-11-23-43-29.png)  
+In the above graphs, white points are training data and blue points are test data. If the number of $M$ is over than 4, standard deviation for test data gets worth and over-fitting occurs.  
+![](2019-05-12-00-25-42.png)  
