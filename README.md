@@ -26,6 +26,7 @@ My Studying Log of fundamentals about Machine Learning Regression.
         - [Extension to plane not passing through origin](#extension-to-plane-not-passing-through-origin)
     - [Linear basis function](#linear-basis-function)
     - [Overfitting problem](#overfitting-problem)
+    - [Hold-out validation](#hold-out-validation)
 
 <!-- /TOC -->
 
@@ -304,3 +305,6 @@ Standard deviation: 1.43[cm]
 ## Overfitting problem  
 Standard deviation of error is decreasing by insreasing the number of $M$ but, the basis function is getting more curved as follow.  
 ![](2019-05-08-23-29-00.png)  
+This curve gets close to each sample points but it becomes deformed at a part where there is no sample point. This is called "over-fitting". The prediction for a new data will become bad.  
+
+## Hold-out validation  
