@@ -27,6 +27,7 @@ My Studying Log of fundamentals about Machine Learning Regression.
     - [Linear basis function](#linear-basis-function)
     - [Overfitting problem](#overfitting-problem)
     - [Hold-out validation](#hold-out-validation)
+    - [Cross-validation](#cross-validation)
 
 <!-- /TOC -->
 
@@ -312,3 +313,7 @@ All of data, $\bm{x}$ and $\bm{t}$ are divided into "Test data" and "Training da
 ![](2019-05-11-23-43-29.png)  
 In the above graphs, white points are training data and blue points are test data. If the number of $M$ is over than 4, standard deviation for test data gets worth and over-fitting occurs.  
 ![](2019-05-12-00-25-42.png)  
+
+## Cross-validation
+The above result depends on how to select training data. This dendency is revealed prominently when the number of data is a few.  
+
