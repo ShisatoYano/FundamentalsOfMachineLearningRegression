@@ -28,6 +28,7 @@ My Studying Log of fundamentals about Machine Learning Regression.
     - [Overfitting problem](#overfitting-problem)
     - [Hold-out validation](#hold-out-validation)
     - [Cross-validation](#cross-validation)
+        - [K-hold cross-validation](#k-hold-cross-validation)
 
 <!-- /TOC -->
 
@@ -317,3 +318,4 @@ In the above graphs, white points are training data and blue points are test dat
 ## Cross-validation
 The above result depends on how to select training data. This dendency is revealed prominently when the number of data is a few.  
 
+### K-hold cross-validation
