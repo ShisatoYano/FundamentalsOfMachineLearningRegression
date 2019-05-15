@@ -62,7 +62,11 @@ def show_gaussian_basis_function(w):
 
 # K-hold cross-validation function
 def k_hold_gaussian_function(x, t, m, k):
-    
+    n = x.shape[0]
+    mse_training = np.zeros(k)
+    mse_test     = np.zeros(k)
+    for i in range(0, k):
+        x_training = x[np.fmod(range(n), k) != i]
 
 # main
 plt.figure(figsize=(10, 2.5))
