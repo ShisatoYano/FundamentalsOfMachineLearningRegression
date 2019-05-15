@@ -29,6 +29,8 @@ My Studying Log of fundamentals about Machine Learning Regression.
     - [Hold-out validation](#hold-out-validation)
     - [Cross-validation](#cross-validation)
         - [K-hold cross-validation](#k-hold-cross-validation)
+        - [Leave-one-out cross-validation](#leave-one-out-cross-validation)
+        - [Validation result](#validation-result)
 
 <!-- /TOC -->
 
@@ -319,3 +321,9 @@ In the above graphs, white points are training data and blue points are test dat
 The above result depends on how to select training data. This dendency is revealed prominently when the number of data is a few.  
 
 ### K-hold cross-validation
+Data $\bm{X}$ and $\bm{t}$ are devided into $K$ groups. One of them is used for test and the rest is used for training. Calculating parameters of model and mean sqared error is executed for $K$ times, and then an average of mean sqared error for $K$ times is calculated. The average value is used for validating the parameters of model.  
+
+### Leave-one-out cross-validation
+A maximum number of division is $K=N$. In this case, a size of test data is 1. This method is called "leave-one-out cross-validation".  
+
+### Validation result
