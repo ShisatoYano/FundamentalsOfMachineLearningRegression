@@ -67,25 +67,33 @@ def k_hold_gaussian_function(x, t, m, k):
     mse_test     = np.zeros(k)
     for i in range(0, k):
         x_training = x[np.fmod(range(n), k) != i]
+        t_training = t[np.fmod(range(n), k) != i]
+        x_test     = x[np.fmod(range(n), k) == i]
+        t_test     = t[np.fmod(range(n), k) == i]
+        w_m        = fitting_gaussian(x_training, t_training, m)
+        mse_training[i] = mse_fitting_gaussian(x_training, t_training, w_m)
+        mse_test[i]     = mse_fitting_gaussian(x_test, t_test, w_m)
+    return mse_training, mse_test
 
 # main
-plt.figure(figsize=(10, 2.5))
-plt.subplots_adjust(wspace=0.3)
-M = [2, 4, 7, 9]
-for i in range(len(M)):
-    plt.subplot(1, len(M), i+1)
-    W = fitting_gaussian(X_train, T_train, M[i])
-    show_gaussian_basis_function(W)
-    plt.plot(X_train, T_train, marker='o', linestyle='None', 
-             color='white', markeredgecolor='black', label='training')
-    plt.plot(X_test, T_test, marker='o', linestyle='None', 
-             color='cornflowerblue', markeredgecolor='black', label='test')
-    plt.grid(True)
-    plt.legend(loc='lower right', fontsize=10, numpoints=1)
-    plt.xlim(X_min, X_max)
-    plt.ylim(130, 200)
-    plt.xlabel('Age')
-    plt.ylabel('Height[cm]')
-    mse = mse_fitting_gaussian(X_test, T_test, W)
-    plt.title("M={0:d}, SD={1:.1f}".format(M[i], np.sqrt(mse)))
+M = range(2, 8)
+K = 20
+gaussian_training = np.zeros((K, len(M)))
+gaussian_test     = np.zeros((K, len(M)))
+for i in range(0, len(M)):
+    gaussian_training[:, i], gaussian_test[:, i] =\
+        k_hold_gaussian_function(X, T, M[i], K)
+mean_gaussian_training = np.sqrt(np.mean(gaussian_training, axis=0))
+mean_gaussian_test     = np.sqrt(np.mean(gaussian_test, axis=0))
+
+plt.figure(figsize=(4, 3))
+plt.plot(M, mean_gaussian_training, marker='o', linestyle='-', 
+         color='k', markerfacecolor='w', label='training')
+plt.plot(M, mean_gaussian_test, marker='o', linestyle='-', 
+         color='cornflowerblue', markeredgecolor='black', label='test')
+plt.grid(True)
+plt.legend(loc='upper left', fontsize=10)
+plt.ylim(0, 20)
+plt.xlabel('M')
+plt.ylabel('SD[cm]')
 plt.show()
