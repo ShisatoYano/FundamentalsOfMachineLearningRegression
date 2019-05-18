@@ -327,5 +327,6 @@ Data $\bm{X}$ and $\bm{t}$ are devided into $K$ groups. One of them is used for 
 A maximum number of division is $K=N$. In this case, a size of test data is 1. This method is called "leave-one-out cross-validation".  
 
 ### Validation result
-This is a difference of standard deviation depending on $M$. When $M$ is 5, the standard deviation is smallest.  
-![](2019-05-17-13-39-21.png)
+This is a difference of standard deviation depending on $M$. When $M$ is 5, the standard deviation is smallest. When a size of data is small, cross-validation is useful. The larger the size of data is, the longer time it takes to calculate the validation.
+![](2019-05-17-13-39-21.png)  
+![](2019-05-18-23-39-50.png)  
