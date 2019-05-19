@@ -31,6 +31,9 @@ My Studying Log of fundamentals about Machine Learning Regression.
         - [K-hold cross-validation](#k-hold-cross-validation)
         - [Leave-one-out cross-validation](#leave-one-out-cross-validation)
         - [Validation result](#validation-result)
+    - [Model improvement](#model-improvement)
+        - [Correct tendency](#correct-tendency)
+        - [New model](#new-model)
 
 <!-- /TOC -->
 
@@ -327,6 +330,18 @@ Data $\bm{X}$ and $\bm{t}$ are devided into $K$ groups. One of them is used for 
 A maximum number of division is $K=N$. In this case, a size of test data is 1. This method is called "leave-one-out cross-validation".  
 
 ### Validation result
-This is a difference of standard deviation depending on $M$. When $M$ is 5, the standard deviation is smallest. When a size of data is small, cross-validation is useful. The larger the size of data is, the longer time it takes to calculate the validation.
+This is a difference of standard deviation depending on $M$. When $M$ is 5, the standard deviation is smallest. When a size of data is small, cross-validation is useful. The larger the size of data is, the longer time it takes to calculate the validation.  
 ![](2019-05-17-13-39-21.png)  
 ![](2019-05-18-23-39-50.png)  
+
+## Model improvement
+The above model still has a problem. It is that the graph is descending at over than 25 years old. This tendency is unusual.  
+
+### Correct tendency
+Height will increase gradually with age and converge at a certain age.  
+
+### New model
+$$
+    y(x) = w_0 - w_1 exp(-w_2 x)
+$$  
+Each parameter, $w_0$, $w_1$, $w_2$ is a positive number. $exp(-w_2 x)$ will close to 0 when $x$ increase.
