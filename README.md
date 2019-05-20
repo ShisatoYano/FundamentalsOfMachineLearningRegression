@@ -34,6 +34,12 @@ My Studying Log of fundamentals about Machine Learning Regression.
     - [Model improvement](#model-improvement)
         - [Correct tendency](#correct-tendency)
         - [New model](#new-model)
+        - [Optimization](#optimization)
+    - [Model selection](#model-selection)
+        - [Model A](#model-a)
+        - [Model B](#model-b)
+        - [Comparison result](#comparison-result)
+    - [Conclusion](#conclusion)
 
 <!-- /TOC -->
 
@@ -315,10 +321,11 @@ Standard deviation of error is decreasing by insreasing the number of $M$ but, t
 This curve gets close to each sample points but it becomes deformed at a part where there is no sample point. This is called "over-fitting". The prediction for a new data will become bad.  
 
 ## Hold-out validation  
-All of data, $\bm{x}$ and $\bm{t}$ are divided into "Test data" and "Training data". For this example, 1/4 of data is used for test and the rest, 3/4 is used for training. The parameter of model, $\bm{w}$ is optimized with only training data and a mean squared error for test data is calculated with the optimized parameter $\bm{w}$.  
+All of data, $\bm{x}$ and $\bm{t}$ are divided into "Test data" and "Training data". For this example, 1/4 of data is used for test and the rest, 3/4 is used for training. The parameter of model, $\bm{w}$ is optimized with only training data and a mean squared error for test data is calculated with the optimized parameter $\bm{w}$. This graph is plot by executing holdout_validation_sample.py.  
 ![](2019-05-11-23-43-29.png)  
 In the above graphs, white points are training data and blue points are test data. If the number of $M$ is over than 4, standard deviation for test data gets worth and over-fitting occurs.  
 ![](2019-05-12-00-25-42.png)  
+This graph is plot by executing holdout_validation_m.py.  
 
 ## Cross-validation
 The above result depends on how to select training data. This dendency is revealed prominently when the number of data is a few.  
@@ -333,6 +340,7 @@ A maximum number of division is $K=N$. In this case, a size of test data is 1. T
 This is a difference of standard deviation depending on $M$. When $M$ is 5, the standard deviation is smallest. When a size of data is small, cross-validation is useful. The larger the size of data is, the longer time it takes to calculate the validation.  
 ![](2019-05-17-13-39-21.png)  
 ![](2019-05-18-23-39-50.png)  
+These graphs are plot by executing k_hold_cross_validation_m.py and learning_gaussian_function_m_5.py.  
 
 ## Model improvement
 The above model still has a problem. It is that the graph is descending at over than 25 years old. This tendency is unusual.  
@@ -344,4 +352,40 @@ Height will increase gradually with age and converge at a certain age.
 $$
     y(x) = w_0 - w_1 exp(-w_2 x)
 $$  
-Each parameter, $w_0$, $w_1$, $w_2$ is a positive number. $exp(-w_2 x)$ will close to 0 when $x$ increase.
+Each parameter, $w_0$, $w_1$, $w_2$ is a positive number. $exp(-w_2 x)$ will close to 0 when $x$ increase. $w_0$ is a convergence value. $w_1$ is a parameter to decide a start point of the graph. $w_2$ is a parameter to decide a slope. 
+
+### Optimization
+The above parameters $\bm{w}$ is calculated by resolving optimization problem with scipy library.  
+![](2019-05-20-05-32-17.png)  
+These optimized parameters $\bm{w}$, $w_0=182.3$, $w_1=107.2$, $w_2=0.2$. Standard deviation of error is 1.31[cm]. This graph is plot by executing scipy_optimization_sample.py.  
+
+## Model selection
+I need to select the best model by comparing their prediction accuracy. The following model A and B are compared by leave-one-out cross-validation.  
+
+### Model A
+$$
+  y(x,\bm{w})=w_0\phi_0(x)+w_1\phi_1(x)+w_2\phi_2(x)+w_3\phi_3(x)+w_4 \\
+  y(\bm{x},\bm{w}) = \sum_{j=0}^{M}w_j\phi_j(\bm{x})=\bm{w}^{\mathrm{T}}\bm{\phi}(\bm{x})
+$$  
+
+### Model B
+$$
+    y(x) = w_0 - w_1 exp(-w_2 x)
+$$  
+
+### Comparison result
+This graph is plot by executing model_comparison_cross_validation.py.  
+![](2019-05-20-08-40-24.png)  
+* Standard deviation(Model A): 1.63[cm]  
+* Standard deviation(Model B): 1.55[cm]  
+According to this validation, I can conclude that Model B is more suitable to the data than Model A.  
+
+## Conclusion
+This is a flow of data analysis(model selection) by supervised learning.  
+
+1. We have data: input valuables and target valuables.  
+2. Purpose function is decided. This function is used for judging a prediction accuracy.  
+3. Candidates of model are decided.  
+4. If we choose hold out validation as a validation method, we need to devide all of data into training data and test data.  
+5. A parameter of each model is decided with training data in minimizing or maximizing the purpose function.  
+6. We predict target data from input data by each model with decided parameters and the model which the error is the smallest.  
