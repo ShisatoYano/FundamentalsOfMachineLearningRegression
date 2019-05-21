@@ -316,7 +316,7 @@ Standard deviation: 1.43[cm]
 ![](2019-05-08-22-52-49.png)  
 
 ## Overfitting problem  
-Standard deviation of error is decreasing by insreasing the number of $M$ but, the basis function is getting more curved as follow.  
+Standard deviation of error is decreasing by increasing the number of $M$ but, the basis function is getting more curved as follow.  
 ![](2019-05-08-23-29-00.png)  
 This curve gets close to each sample points but it becomes deformed at a part where there is no sample point. This is called "over-fitting". The prediction for a new data will become bad.  
 
@@ -328,10 +328,10 @@ In the above graphs, white points are training data and blue points are test dat
 This graph is plot by executing holdout_validation_m.py.  
 
 ## Cross-validation
-The above result depends on how to select training data. This dendency is revealed prominently when the number of data is a few.  
+The above result depends on how to select training data. This dependency is revealed prominently when the number of data is a few.  
 
 ### K-hold cross-validation
-Data $\bm{X}$ and $\bm{t}$ are devided into $K$ groups. One of them is used for test and the rest is used for training. Calculating parameters of model and mean sqared error is executed for $K$ times, and then an average of mean sqared error for $K$ times is calculated. The average value is used for validating the parameters of model.  
+Data $\bm{X}$ and $\bm{t}$ are divided into $K$ groups. One of them is used for test and the rest is used for training. Calculating parameters of model and mean squared error is executed for $K$ times, and then an average of mean squared error for $K$ times is calculated. The average value is used for validating the parameters of model.  
 
 ### Leave-one-out cross-validation
 A maximum number of division is $K=N$. In this case, a size of test data is 1. This method is called "leave-one-out cross-validation".  
